@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ПРАКТИЧЕСКАЯ РАБОТА №5</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<div th:insert="Blocks/Header"></div>
+<h1>Двигатели</h1>
+
+<form  th:action="'/Add/Engine'">
+  <button class="btn btn-warning" STYLE="background: #379683" type="submit">Добавить двигатель</button>
+</form>
+
+<div th:each="el : ${Engine}">
+
+  <p style="color: white"/><b>Объем двигателя - </b> <span th:text="${el.getHorsepower()}"/></p>
+  <p style="color: white"/><b>Л/С - </b> <span th:text="${el.getEngineCapacity()}"/></p>
+
+  <form  th:action="'/Engine/' + ${el.id} + '/Edit'">
+    <button class="btn btn-warning" style="background: #379683" type="submit">Изменить</button>
+  </form>
+
+  <form th:action="'/Engine/' + ${el.id} + '/Remove'" method="post">
+    <button class="btn btn-warning" style="background: #379683" type="submit">Удалить</button>
+  </form>
+</div>
+</body>
+</html>

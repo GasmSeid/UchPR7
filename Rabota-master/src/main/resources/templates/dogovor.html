@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление договора</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form th:action="${'/dogovor/add/'}" method="post">
+    <select  name="manager">
+        <div th:each="element : ${managers}">
+            <option th:value="${element.id}" th:text="${element.surname}"></option>
+        </div>
+    </select>
+    <select  name="post">
+        <div th:each="element : ${posts}">
+            <option th:value="${element.id}" th:text="${element.postname}"></option>
+        </div>
+    </select>
+    <br>
+    <button type="submit">Добавить договор</button>
+</form>
+</div>
+
+<div th:each="mangr : ${managers}">
+    <h2 th:text="${mangr.getSurname()}"></h2>
+    Должность: <br>
+    <div th:each="pst : ${mangr.getPosts()}">
+        <div th:text="${pst.getPostname()}"></div>
+        <form th:action = "'pst/delMan/'+ ${mangr.id} + '/'+ ${pst.id}" method="post">
+            <button type="submit">Удалить</button>
+            <br>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

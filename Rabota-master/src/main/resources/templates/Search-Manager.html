@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+</head>
+<body style="background: #5CDB95">
+<h2>Поиск сотрудника</h2>
+<form method="post" th:action="${'/Search/Manager-result'}">
+  <input type="text" name="surname"><br>
+  <button type="submit" style="background: #379683">Точное сопадение</button>
+</form>
+<form method="post" th:action="${'/Search/Manager'}">
+  <input type="text" name="surname"><br>
+  <button type="submit" style="background: #379683">Не точное сопадение</button>
+</form>
+  <div th:each="el : ${result}">
+    <h3><b> Фамилия - </b> <span th:text="${el.getSurname()}" /></h3>
+    <p><b>Имя - </b> <span th:text="${el.getName()}"/></p>
+    <p><b> Отчество - </b> <span th:text="${el.getMiddlename()}"/></p>
+    <p><b> Дата рождения - </b> <span th:text="${el.getBthday()}"/></p>
+    <p><b> Серия паспорта - </b> <span th:text="${el.getSeriaPass()}"/></p>
+    <p><b> Номер паспорта - </b> <span th:text="${el.getNomPass()}"/></p>
+    <p><b> Адрес регистрации - </b> <span th:text="${el.getAdresReg()}"/></p>
+    <p><b> Email - </b> <span th:text="${el.getEmail()}"/></p>
+  </div>
+</body>
+</html>

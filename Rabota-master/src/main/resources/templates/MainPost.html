@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА №5</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<div th:insert="Blocks/Header"></div>
+<h1>Должности</h1>
+
+<form  th:action="'/Add/Post'">
+    <button class="btn btn-warning" STYLE="background: #379683" type="submit">Добавить должность</button>
+</form>
+
+<div th:each="el : ${Post}">
+
+    <p style="color: white"/><b>Наименование должности - </b> <span th:text="${el.getPostname()}"/></p>
+    <p style="color: white"/><b>Оклад - </b> <span th:text="${el.getSalary()}"/></p>
+
+        <form  th:action="'/Post/' + ${el.id} + '/Edit'">
+            <button class="btn btn-warning" style="background: #379683" type="submit">Изменить</button>
+        </form>
+
+        <form th:action="'/Post/' + ${el.id} + '/Remove'" method="post">
+            <button class="btn btn-warning" style="background: #379683" type="submit">Удалить</button>
+        </form>
+</div>
+</body>
+</html>
+

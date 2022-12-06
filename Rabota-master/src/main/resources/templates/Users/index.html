@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title> Список пользователей</title>
+</head>
+<body>
+<table border="1" >
+  <tr>
+    <th>Username</th>
+    <th>Роль</th>
+  </tr>
+  <tr  th:each="el : ${user_list}" style="align:left;">
+    <td th:text="${el.username}" style="border:2px solid black;"></td>
+    <td tyle="border:2px solid black;">
+      <div th:each="role : ${el.roles}">
+        <p th:text="${role}"></p>
+      </div>
+    </td>
+    <td style="border:2px solid black;"><a th:href="'/admin/'+${el.id}">Подробнее</a></td>
+  </tr>
+</table>
+</body>
+</html>

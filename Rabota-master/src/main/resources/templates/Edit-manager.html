@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА №4</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+<h2>Редактирование данных сотрудника</h2>
+<div th:each="el : ${Manager}" th:object = "${Manager}">
+    <form  method="post">
+        <input th:field="*{surname}" th:value="${el.getSurname()}" type="text" name="surname" placeholder="Фамилия"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+        <input th:field="*{name}" th:value="${el.getName()}" type="text" name="name" placeholder="Имя"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        <input type="text" th:value="${el.getMiddlename()}" th:field="*{middlename}" name="middlename" placeholder="Отчество"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}"></div>
+        <input type="text" th:value="${el.getBthday()}" th:field="*{bthday}" name="bthday" placeholder="Дата рождения"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('bthday')}" th:errors="*{bthday}"></div>
+
+        <input type="text" th:value="${el.getAdresReg()}" th:field="*{AdresReg}" name="AdresReg" placeholder="Адрес регистрации"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('AdresReg')}" th:errors="*{AdresReg}"></div>
+        <input type="text" th:value="${el.getEmail()}" th:field="*{Email}" name="Email" placeholder="Email"><br>
+        <div style="color: white" th:if="${#fields.hasErrors('Email')}" th:errors="*{Email}"></div>
+        <form>
+            <button type="submit" style="background: #379683"> Изменить данные сотрудника</button>
+        </form>
+    </form>
+</div>
+</body>
+</html>

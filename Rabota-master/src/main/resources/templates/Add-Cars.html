@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА №3</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <div th:insert="Blocks/Header"></div>
+</head>
+<body style="background: #5CDB95">
+<form th:action= "${'/Add/Cars'}" method="post" th:object = "${cars}">
+
+    <input type="text" th:field="*{carbrand}" name="carbrand" placeholder="Марка"> <br>
+    <div style="color: white" th:if="${#fields.hasErrors('carbrand')}" th:errors="*{carbrand}"></div>
+    <input type="text" name="carsmodel" th:field="*{carsmodel}" placeholder="Модель"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('carsmodel')}" th:errors="*{carsmodel}"></div>
+    <input type="text" name="year_release" th:field="*{year_release}" placeholder="Год выпуска"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('year_release')}" th:errors="*{year_release}"></div>
+    <input type="text" name="color" th:field="*{color}" placeholder="Цвет"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></div>
+
+    <select  name="horsepower">
+        <div th:each="element : ${engine}">
+            <option th:text="${element.horsepower}"></option>
+        </div>
+    </select>
+
+    <br>
+    <form>
+        <button type="submit" style="background: #379683"> Добавить автомобиль</button>
+    </form>
+</form>
+<br>
+
+</body>
+</html>
+

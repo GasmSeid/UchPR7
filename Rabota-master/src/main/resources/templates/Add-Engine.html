@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>ПРАКТИЧЕСКАЯ РАБОТА</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <div th:insert="Blocks/Header"></div>
+</head>
+<body style="background: #5CDB95">
+<form th:object = "${engine}" th:action="${'/Add/Engine'}" method="post">
+    <input type="text" name="horsepower" th:field="*{horsepower}" placeholder="Л/С"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('horsepower')}" th:errors="*{horsepower}"></div>
+    <input type="text" name="engineCapacity" th:field="*{engineCapacity}" placeholder="Объем двигателя"><br>
+    <div style="color: white" th:if="${#fields.hasErrors('engineCapacity')}" th:errors="*{engineCapacity}"></div>
+    <br>
+    <form>
+        <button type="submit" style="background: #379683">Добавить двигатель</button>
+    </form>
+</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ПРАКТИЧЕСКАЯ РАБОТА №3</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #5CDB95">
+
+<h2>Автомобили</h2>
+
+<div th:each="el : ${Cars}">
+  <h5><b> Марка -  </b> <span th:text="${el.getCarbrand()}" /></h5>
+  <h5><b> Модель -  </b> <span th:text="${el.getCarsmodel()}"/></h5>
+  <p><b> Год выпуска -  </b> <span th:text="${el.getYear_release()}"/></p>
+  <p><b> Цвет -  </b> <span th:text="${el.getColor()}"/></p>
+
+  <form  th:action="'/blog/Cars/' + ${el.id} + '/Edit'">
+    <button class="btn btn-warning" style="background: #379683" type="submit">Изменить</button>
+  </form>
+  <form th:action="'/blog/Cars/' + ${el.id} + '/Remove'" method="post">
+    <button class="btn btn-warning" style="background: #379683" type="submit">Удалить</button>
+  </form>
+
+</div>
+</body>
+</html>
